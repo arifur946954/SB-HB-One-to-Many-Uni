@@ -37,10 +37,17 @@ public class JpaCrudApplication {
 			//deteCourseById(appDao);
 			//save course for review
 			//CreateCourseByReview(appDao);
-			findCourseWithReview(appDao);
+			//findCourseWithReview(appDao);
+			deleteCourseByReview(appDao);
 					
 			//test file
 		};
+	}
+
+	private void deleteCourseByReview(AppDao appDao) {
+		int theId=10;
+		System.out.println("delete id is:"+theId);
+		appDao.deleteCourseById(theId);
 	}
 
 	private void findCourseWithReview(AppDao appDao) {
