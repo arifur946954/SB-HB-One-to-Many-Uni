@@ -115,5 +115,11 @@ public class AppDaoImp implements AppDao{
 
     }
 
+    @Override
+    @Transactional
+    public void save(Course theCourse) {
+      entityManager.persist(theCourse);
+    }
+
 
 }

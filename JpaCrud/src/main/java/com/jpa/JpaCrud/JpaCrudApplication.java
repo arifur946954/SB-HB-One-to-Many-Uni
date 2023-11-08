@@ -4,6 +4,7 @@ import com.jpa.JpaCrud.dao.AppDao;
 import com.jpa.JpaCrud.entity.Course;
 import com.jpa.JpaCrud.entity.Instructor;
 import com.jpa.JpaCrud.entity.InstructorDetails;
+import com.jpa.JpaCrud.entity.Review;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -21,7 +22,7 @@ public class JpaCrudApplication {
 	@Bean
 	public CommandLineRunner commandLineRunner(AppDao appDao){
 		return  runner->{
-		createConstructor(appDao);
+		    //createConstructor(appDao);
 			//findInstructor(appDao);
 			//deleteInstructor(appDao);
 			//findInstructorDetails(appDao);
@@ -34,8 +35,25 @@ public class JpaCrudApplication {
 			//updateCourseDetails(appDao);
 			//deleteInstructorWithCourse(appDao);
 			//deteCourseById(appDao);
+			//save course for review
+			CreateCourseByReview(appDao);
+					
 			//test file
 		};
+	}
+
+	private void CreateCourseByReview(AppDao appDao) {
+		Course tempCourse=new Course("EEE-101");
+		Review tempReview1=new Review("oh this course is just awesome!!!!");
+		Review tempReview2=new Review("oh this course is just Shiit!!!!");
+		Review tempReview3=new Review("i want to study in bangla why select this course!!!!");
+		tempCourse.addReview(tempReview1);
+		tempCourse.addReview(tempReview2);
+		tempCourse.addReview(tempReview3);
+		System.out.println("Total review is "+tempCourse.getReviews());
+		appDao.save(tempCourse);
+		System.out.println("Done!!!!!!!!!");
+
 	}
 
 	private void deteCourseById(AppDao appDao) {
